@@ -4,25 +4,41 @@ const request = require('request')
 const querystring = require("querystring");
 const SpotifyWebApi = require("spotify-web-api-node");
 
-const spotifyApi = new SpotifyWebApi();
+
 
 const clientId = process.env.CLIENT_ID;
 const clientSecret = process.env.CLIENT_SECRET;
 const redirect = "http://localhost:8888/callback";
 
 
+const spotifyApi = new SpotifyWebApi();
 
-router.get('/login', (req, res) => {
+const generateRandomString = length => {
+    let text = "";
+    const possible =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for (let i = 0; i < length; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return text;
+}
+
+//Log In to Spotify API using CLient ID and Secret
+router.get("/login", (req, res) => {
     let scope = "";
+    let state = generateRandomString(16);
+    // localStorage.setItem('State', stateKey);
     res.redirect(
         "https://accounts.spotify.com/authorize?" +
         querystring.stringify({
             response_type: "code",
-            client_id: clientId,
+            client_id: client_id,
             scope: scope,
-            redirect_uri: redirect,
-        }))
-})
+            redirect_uri: redirect_uri,
+            state: state
+        })
+    );
+});
 
 router.get('/callback', ((req, res) => {
     let code = req.query.code || null;
@@ -33,7 +49,8 @@ router.get('/callback', ((req, res) => {
         form: {
             code: code,
             redirect_uri: redirect,
-            grant_type: "authorization_code"
+            grant_type: "authorization_code",
+            state: state
         },
         headers: {
             Authorization:
@@ -48,8 +65,7 @@ router.get('/callback', ((req, res) => {
                 refresh_token = body.refresh_token;
             spotifyApi.setAccessToken(access_token);
             spotifyApi.setRefreshToken(refresh_token);
-            // res.redirect('/home')
-            res.redirect('/home');
+            res.redirect('http://localhost:3001/');
         } else {
             res.redirect(
                 "/#" +

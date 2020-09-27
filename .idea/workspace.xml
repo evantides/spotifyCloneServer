@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="566e6e9e-8cb6-4641-a6fa-9f463100163e" name="Default Changelist" comment="" />
+    <list default="true" id="566e6e9e-8cb6-4641-a6fa-9f463100163e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/db/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/spotify.js" beforeDir="false" afterPath="$PROJECT_DIR$/db/spotify.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +36,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1600999623778</updated>
-      <workItem from="1600999625044" duration="2788000" />
+      <workItem from="1600999625044" duration="3632000" />
+      <workItem from="1601065185550" duration="4307000" />
+      <workItem from="1601160127239" duration="4215000" />
+      <workItem from="1601226729385" duration="91000" />
     </task>
     <servers />
   </component>
