@@ -33,7 +33,8 @@ router.get('/callback', ((req, res) => {
         form: {
             code: code,
             redirect_uri: redirect,
-            grant_type: "authorization_code"
+            grant_type: "authorization_code",
+            state: state
         },
         headers: {
             Authorization:
@@ -48,7 +49,6 @@ router.get('/callback', ((req, res) => {
                 refresh_token = body.refresh_token;
             spotifyApi.setAccessToken(access_token);
             spotifyApi.setRefreshToken(refresh_token);
-            // res.redirect('/home')
             res.redirect('/home');
         } else {
             res.redirect(
