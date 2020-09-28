@@ -23,7 +23,6 @@ mongoose.connection.once("open", () => {
 });
 
 app.use("/", require("./db/spotify.js"));
-app.use("/search", require('./db/search.js'))
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
